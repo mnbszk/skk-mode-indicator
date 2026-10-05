@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "skk-mode-indicator",
+  "name": "SKK Mode Indicator",
+  "version": "1.0.0",
+  "author": "Manabu Suezaki",
+  "license": "MIT",
+  "description": "Shows the fcitx5-skk input mode (あ/ア/ｱ/A/Ａ) in the bar; click to toggle SKK, scroll to switch modes.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "SKK Mode Indicator",
+    "description": "fcitx5-skk on/off and input mode indicator",
+    "category": "Input",
+    "allowMultiple": false,
+    "defaultSection": "right"
+  }
+}
