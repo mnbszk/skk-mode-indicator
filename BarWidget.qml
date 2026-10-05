@@ -6,7 +6,7 @@ import qs.Ui
 import qs.Commons
 
 // fcitx5-skk widget. While skk is active it shows the SKK input mode
-// (あ / ア / ｱ / A / Ａ); otherwise a dimmed "A". Left click toggles fcitx5,
+// (あ / ア / ｱ / A / Ａ); otherwise a dimmed "EN". Left click toggles fcitx5,
 // middle click or the wheel cycles SKK modes, right click opens the fcitx5
 // config tool.
 //
@@ -33,7 +33,7 @@ BarWidget {
     return null
   }
 
-  readonly property string offLabel: String(root.settings && root.settings.offLabel || "A")
+  readonly property string offLabel: String(root.settings && root.settings.offLabel || "EN")
   // Modes the wheel/middle click cycles through, by their short label.
   readonly property var cycleModes: root.settings && Array.isArray(root.settings.cycle)
     ? root.settings.cycle : ["あ", "ア", "A"]

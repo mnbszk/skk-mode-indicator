@@ -6,14 +6,17 @@ An Omarchy shell bar widget for [fcitx5-skk](https://github.com/fcitx/fcitx5-skk
 It shows whether SKK is on and which input mode it is in, and lets you switch
 both from the bar.
 
-| State                 | Label        |
-|-----------------------|--------------|
-| Hiragana              | `あ`         |
-| Katakana              | `ア`         |
-| Half-width Katakana   | `ｱ`          |
-| Latin                 | `A`          |
-| Wide Latin            | `Ａ`         |
-| Off (fcitx5 inactive) | `A` (dimmed) |
+| State               | Label         |
+|---------------------|---------------|
+| Hiragana            | `あ`          |
+| Katakana            | `ア`          |
+| Half-width Katakana | `ｱ`           |
+| Latin               | `A`           |
+| Wide Latin          | `Ａ`          |
+| Off                 | `EN` (dimmed) |
+
+SKK counts as off while fcitx5 is inactive or another input method (such as
+`keyboard-us`) is selected.
 
 Hovering the widget shows the full mode name, e.g. `SKK: あ - Hiragana`.
 The widget hides itself while fcitx5 is not running.
@@ -88,12 +91,12 @@ and can be changed with `omarchy bar set`.
 
 | Key        | Default             | Description                                   |
 |------------|---------------------|-----------------------------------------------|
-| `offLabel` | `"A"`               | Label shown while SKK is off                  |
+| `offLabel` | `"EN"`              | Label shown while SKK is off                  |
 | `cycle`    | `["あ", "ア", "A"]` | Modes the wheel and middle click cycle through, by label |
 
 ```bash
-# Show "EN" while SKK is off
-omarchy bar set skk-mode-indicator offLabel EN
+# Show "−" while SKK is off
+omarchy bar set skk-mode-indicator offLabel −
 
 # Include half-width Katakana and Wide Latin in the cycle
 omarchy bar set skk-mode-indicator cycle '["あ","ア","ｱ","A","Ａ"]' --json
@@ -128,8 +131,6 @@ the matching menu item.
 
 ## Limitations
 
-- Latin mode and the off state both show `A`; they differ only in being
-  dimmed. Set `offLabel` to tell them apart.
 - The mode is read from fcitx5's tray menu, so the widget cannot show
   the mode if the tray icon is disabled.
 
