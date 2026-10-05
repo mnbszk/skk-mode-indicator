@@ -18,27 +18,57 @@ both from the bar.
 Hovering the widget shows the full mode name, e.g. `SKK: あ - Hiragana`.
 The widget hides itself while fcitx5 is not running.
 
-## Requirements
+## Dependencies
 
 - Omarchy shell (Quickshell)
-- fcitx5 with fcitx5-skk, and `skk` added to the input method group
-- `fcitx5-remote`, `busctl` (systemd) and `dbus-monitor` (dbus) on `PATH`
+- [fcitx5](https://github.com/fcitx/fcitx5) and
+  [fcitx5-skk](https://github.com/fcitx/fcitx5-skk), with `skk` added to the
+  input method group
+- `fcitx5-remote` (fcitx5), `busctl` (systemd) and `dbus-monitor` (dbus) on `PATH`
 - fcitx5's tray icon (StatusNotifierItem) enabled, which is the default
+
+On Arch Linux, fcitx5-skk can be installed with:
+
+```bash
+omarchy pkg add fcitx5-skk
+```
 
 ## Installation
 
-Place this directory at `~/.config/omarchy/plugins/skk-mode-indicator/`, then add the
-widget to the bar:
-
 ```bash
-omarchy bar put skk-mode-indicator --section right
+omarchy plugin add https://github.com/mnbszk/skk-mode-indicator --enable
 ```
 
-If the widget does not pick up changes to its files, restart the shell:
+`--enable` adds the widget to the bar right away. Without it, enable it later
+with:
 
 ```bash
-omarchy restart shell
+omarchy plugin enable skk-mode-indicator
 ```
+
+To move it elsewhere on the bar, for example:
+
+```bash
+omarchy bar move skk-mode-indicator --section right
+```
+
+To update to the latest version:
+
+```bash
+omarchy plugin update skk-mode-indicator
+```
+
+If the widget does not pick up changes to its files, restart the shell with
+`omarchy restart shell`.
+
+## Removal
+
+```bash
+omarchy plugin remove skk-mode-indicator
+```
+
+This unloads the widget and deletes its folder. fcitx5 and fcitx5-skk are
+left installed.
 
 ## Usage
 
